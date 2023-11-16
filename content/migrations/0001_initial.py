@@ -15,11 +15,13 @@ class Migration(migrations.Migration):
             name='Feed',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField()),
+                ('number_data', models.TextField()),
+                ('tag', models.TextField()),
                 ('image', models.TextField()),
-                ('profile_image', models.TextField()),
                 ('user_id', models.TextField()),
                 ('like_count', models.IntegerField()),
+                ('upload_date', models.DateTimeField()),
+                ('created_at', models.DateTimeField(auto_now_add=True))
             ],
         ),
     ]
