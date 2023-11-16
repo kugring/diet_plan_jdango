@@ -1,0 +1,439 @@
+<script>
+    // 중요한 데이터 값들!
+    const condition_chart_data = [10, 20, 30, 40, 30, 40, 20, 50, 27, 52, 38, 26, 75, 22];
+    const condition_chart_dataHalf = [5, 10, 20, 7, 30, 20, 26, 14, 36, 25, 72, 25, 53, 50];
+
+    // 최대값 최소값 구하기
+    const condition_mostPositiveValue = Math.max(...condition_chart_data);
+    const condition_mostNegativeValue = Math.min(...condition_chart_data);
+
+
+    var condition_mixedChart = {
+        type: 'bar',
+        labels: ['Mon', 'Tue', 'Wue', 'Tru', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wue', 'Tru', 'Fri', 'Sat', 'Sun',],
+        datasets: [
+            {
+                label: '허리둘레',
+                data: condition_chart_dataHalf,
+                backgroundColor: 'transparent',
+                borderColor: 'rgba(239,142,64,0.58)',
+                type: 'line',
+                pointBorderWidth: 2,
+                pointRadius: 8,
+                pointBackgroundColor: 'rgb(255,242,229)',
+                datalabels: {
+                    font: {
+                        size: 10,
+                        weight: 600
+                    },
+                    color: 'rgba(222,95,50,0.58)',
+                    align: 'center',
+                    anchor: 'center'
+                }
+            },
+            {
+                label: '체중',
+                data: condition_chart_data,
+                backgroundColor: [
+                    'rgb(255,224,176)',
+
+                ],
+                borderColor: [
+                    'rgb(255,202,136)',
+
+                ],
+                borderWidth: 2,
+                borderRadius: 10,
+                borderSkipped: true,
+                categoryPercentage: 0.6
+            },
+        ]
+    };
+    // 플러그인 정의
+    const condition_ChartMovePlugin = {
+        id: 'moveChart',
+        afterEvent(chart, args) {
+            const {ctx, canvas, chartArea: {left, right, top, bottom, width, height}} = chart;
+
+            // 마우스가 있는 좌표를 알려주는 코드
+            canvas.addEventListener('mousemove', (event) => {
+                const x = args.event.x;
+                const y = args.event.y;
+
+                // x,y축의 픽셀값을 설정하고 그에 따라 마우스 모양을 다르게 한다.
+                if (x >= left - 15 && x <= left + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                    canvas.style.cursor = 'pointer';
+                } else if (x >= right - 15 && x <= right + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                    canvas.style.cursor = 'pointer';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+            })
+        },
+
+
+        afterDraw(chart, args, options) {
+            const {ctx, chartArea} = chart;
+            const {left, right, top, bottom, width, height} = chartArea;
+
+            class CircleChevron {
+                //construcor(x1,y1) {
+                //  //
+                //}
+                draw(ctx, x1, pixel) {
+                    const angle = Math.PI / 180;
+
+                    <!-- 일부러 방향표 빼놓은것 -->
+
+                    // 동그라미 그리기
+                    {#ctx.beginPath();#}
+                    {#ctx.lineWidth = 3;#}
+                    {#ctx.strokeStyle = 'rgba(102,102,102,0.5)';#}
+                    {#ctx.fillStyle = 'white';#}
+                    {#ctx.arc(x1, height / 2 + top + 9, 10, angle * 0, angle * 360, false);#}
+                    {#ctx.stroke();#}
+                    {#ctx.fill();#}
+                    {#ctx.closePath();#}
+                    {##}
+                    {#// 화살표 그리기#}
+                    {#ctx.beginPath();#}
+                    {#ctx.lineWidth = 3;#}
+                    {#ctx.strokeStyle = 'rgb(255,156,84)';#}
+                    {#ctx.moveTo(x1 + pixel, top + height / 2 + top - 6.5);#}
+                    {#ctx.lineTo(x1 - pixel, top + height / 2 + top - 1);#}
+                    {#ctx.lineTo(x1 + pixel, top + height / 2 + top + 4.5);#}
+                    {#ctx.stroke();#}
+                    {#ctx.closePath();#}
+
+                    <!-- 여기까지 빼놓은것 -->
+                }
+            }
+
+            // 왼쪽 버튼을 그리는 코드
+            let drawCircleLeft = new CircleChevron();
+            drawCircleLeft.draw(ctx, left, 4);
+
+            // 오른쪽 버튼을 그리는 코드
+            let drawCircleRight = new CircleChevron();
+            drawCircleRight.draw(ctx, right, -4);
+
+            // back_스크롤 만드는 코드
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(255,236,177)';
+            ctx.rect(left + 15, bottom + 19, width - 30, 7);
+            ctx.fill();
+            ctx.closePath()
+            // front_스크롤 만드는 코드
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(252,195,140)';
+            ctx.rect(left - 0.8, -1, width + 1, 2); // 메인 위쪽 테두리
+            ctx.rect(left - 1, 93, width + 2, 3); // 메인 아래 테두리
+            ctx.rect(left - 1, -7, 2, 126); // 메인 왼쪽 테두리
+            ctx.rect(right - 1, -7, 2, 126); // 메인 오른쪽 테두리
+            ctx.fill();
+            ctx.closePath()
+
+            // 양쪽 사이드에 테두리 그리기
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(252,195,140)';
+            ctx.rect(left, bottom + 19, 15, 7); // 스크롤 왼쪽 두꺼운 테두리
+            ctx.rect(right - 15, bottom + 19, 15, 7); // 스크롤 오른쪽 오른쪽 테두리
+            ctx.rect(left + 15, bottom + 19, width - 30, 2); // 스크롤 위쪽 테두리
+            ctx.rect(left + 15, bottom + 24, width - 30, 2); // 스크롤 아래쪽 테두리
+            ctx.fill();
+            ctx.closePath()
+
+            // 칸막이 그리기
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(252,195,140)';
+            ctx.rect(left + 39, bottom, 2, 21); // 1
+            ctx.rect(left + 78, bottom, 2, 21); // 2
+            ctx.rect(left + 117, bottom, 2, 21); // 3
+            ctx.rect(left + 156, bottom, 2, 21); // 4
+            ctx.rect(left + 195, bottom, 2, 21); // 5
+            ctx.rect(left + 234, bottom, 2, 21); // 6
+            ctx.fill();
+            ctx.closePath()
+
+            // movable bar
+            const min = chart.options.scales.x.min;
+            let startingPoint = left + 15 + width / condition_chart_data.length * min;
+            const barWidth = (width - 30) / (condition_chart_data.length / 7)
+
+            const totalWidth = startingPoint + barWidth
+            if (totalWidth > width) {
+                startingPoint = right - 15 - barWidth;
+            }
+
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(255,255,255)';
+            ctx.rect(startingPoint, bottom + 21, barWidth, 3);
+            ctx.fill();
+            ctx.closePath()
+
+        }
+    }
+
+
+    // Chart.js 플러그인 생성
+    Chart.register(condition_ChartMovePlugin);
+    Chart.register(ChartDataLabels);
+
+
+    var condition_ctx = document.getElementById('condition_chart').getContext('2d');
+    var condition_chart = new Chart(condition_ctx, {
+            type: 'bar',
+            data: condition_mixedChart,
+            plugins: {
+                moveChart: [condition_ChartMovePlugin, ChartDataLabels] // 플러그인 활성화
+            },
+            options: {
+                layout: {
+                    padding: {
+                        top: -4,
+                        right: 0,
+                        bottom: 20,
+                    }
+
+                },
+                plugins: {
+                    datalabels: {
+                        padding: {top: -5},
+                        align: 'start',
+                        anchor: 'start',
+                        color: 'orange',
+                        font: {
+                            weight: 600
+                        },
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: "식단과 운동",
+                        fontSize: 10
+                    }
+                },
+                scales: {
+                    x: {
+                        position: 'top',
+                        min: 0, // 0~6은 1~7를 의미한다.
+                        max: 6,
+
+                        ticks: {
+                            padding: 10,
+                            font:
+                                {
+                                    size: 10,
+                                    weight: 600
+                                }
+                            ,
+                            color: 'orange', // 폰트 색상 변경
+
+                        },
+                        grid: {
+                            display: true,
+                            drawBorder: false,
+                            drawOnChartArea: false, // 차트 안에서의 x축 그리드를 그려줌
+                            color: 'rgb(255,156,84)',
+                            drawTicks: false, // x축에 삐죽 튀어난 선을 없애줌
+                        },
+                        stacked: true, // 데이터 누적 시킬것인지!
+                        border: {
+                            display: false,
+                            color: 'rgb(255,156,84)', //  위쪽 차트 테두리 색상
+                            width: 2, //  위쪽 차트 테두리 굵기
+                        }
+                    },
+                    x2: {
+                        ticks: {
+                            font: {
+                                size: 0
+                            }
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                            drawTicks: true,
+                        },
+                        position: 'bottom',
+                        min: 0, // 0~6은 1~7를 의미한다.
+                        max: 6,
+                        stacked: false, // 데이터 누적 시킬것인지!
+                        border: {
+                            display: false,
+                            color: 'rgb(252,195,140)', //  아래쪽 차트 테두리 색상
+                            width: 2, //  아래쪽 차트 테두리 굵기
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        stacked: true, // 데이터 누적 시킬것인지!
+                        border: {
+                            color: 'rgb(255,156,84)', //  왼쪽 차트 테두리 색상
+                            width: 2, //  왼쪽 차트 테두리 굵기
+                        }
+                    },
+                    y2: {
+                        position:
+                            'right',
+                        ticks: {
+                            display: false
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        stacked: true, // 데이터 누적 시킬것인지!
+                        border: {
+                            color: 'rgb(255,156,84)', //  오른쪽 차트 테두리 색상
+                            width: 2, //  오른쪽 차트 테두리 굵기
+                        }
+                    }
+                }
+            },
+        })
+    ;
+
+    function moveScroll() {
+        const {ctx, canvas, chartArea: {left, right, top, bottom, width, height}} = condition_chart;
+
+        canvas.addEventListener('click', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            console.log(condition_chart_data.length)
+            if (x >= left - 15 && x <= left + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                condition_chart.options.scales.x.min = condition_chart.scales.x.min - 7;
+                condition_chart.options.scales.x.max = condition_chart.scales.x.max - 7;
+                if (condition_chart.options.scales.x.max <= 0) {
+                    condition_chart.options.scales.x.min = 0;
+                    condition_chart.options.scales.x.max = 6;
+                }
+            }
+
+            if (x >= right - 15 && x <= right + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                condition_chart.options.scales.x.min = condition_chart.scales.x.min + 7;
+                condition_chart.options.scales.x.max = condition_chart.scales.x.max + 7;
+                if (condition_chart.options.scales.x.max >= condition_chart_data.length) {
+                    condition_chart.options.scales.x.min = condition_chart_data.length - 7;
+                    condition_chart.options.scales.x.max = condition_chart_data.length;
+                }
+            }
+            condition_chart.update();
+        })
+    }
+
+    function scrollWheel(wheel, chart) {
+        if (wheel.deltaY < 0) {
+            console.log(wheel.deltaY);
+            condition_chart.options.scales.x.min = condition_chart.scales.x.min - 7;
+            condition_chart.options.scales.x.max = condition_chart.scales.x.max - 7;
+            if (condition_chart.options.scales.x.max <= 0) {
+                condition_chart.options.scales.x.min = 0;
+                condition_chart.options.scales.x.max = 6;
+            }
+        }
+        if (wheel.deltaY > 0) {
+            console.log(wheel.deltaY);
+            condition_chart.options.scales.x.min = condition_chart.scales.x.min + 7;
+            condition_chart.options.scales.x.max = condition_chart.scales.x.max + 7;
+            if (condition_chart.options.scales.x.max >= condition_chart_data.length) {
+                condition_chart.options.scales.x.min = condition_chart_data.length - 7;
+                condition_chart.options.scales.x.max = condition_chart_data.length;
+            }
+        }
+        condition_chart.update();
+    }
+
+
+    condition_chart.canvas.onclick = moveScroll;
+
+    condition_chart.canvas.addEventListener('wheel', (e) => {
+        scrollWheel(e, condition_chart)
+    });
+
+    var dragStartX = 0;
+    var isDragging = false;
+
+    // 마우스 다운 이벤트 및 터치 시작 이벤트 처리
+    condition_chart.canvas.addEventListener('mousedown', handleDragStart);
+    condition_chart.canvas.addEventListener('touchstart', handleDragStart);
+
+    function handleDragStart(event) {
+        if (event.type === 'mousedown') {
+            dragStartX = event.clientX;
+        } else if (event.type === 'touchstart') {
+            dragStartX = event.touches[0].clientX;
+        }
+
+        isDragging = true;
+    }
+
+    // 마우스 이동 이벤트 및 터치 이동 이벤트 처리
+    condition_chart.canvas.addEventListener('mousemove', handleDrag);
+    condition_chart.canvas.addEventListener('touchmove', handleDrag);
+
+    function handleDrag(event) {
+        if (isDragging) {
+            var clientX;
+
+            if (event.type === 'mousemove') {
+                clientX = event.clientX;
+            } else if (event.type === 'touchmove') {
+                clientX = event.touches[0].clientX;
+            }
+
+            var deltaX = clientX - dragStartX;
+            dragStartX = clientX;
+
+            // 원하는 이동 거리 및 방향에 따라 x 축 스케일 업데이트
+            var scrollStep = 7;
+            condition_chart.options.scales.x.min -= deltaX / scrollStep;
+            condition_chart.options.scales.x.max -= deltaX / scrollStep;
+
+            // 최소값과 최대값을 0과 condition_chart_data.length / 7 범위로 고정
+            if (condition_chart.options.scales.x.min < 0) {
+                if (condition_chart.options.scales.x.max <= 7) {
+                    condition_chart.options.scales.x.min = 0;
+                    condition_chart.options.scales.x.max = 6;
+                }
+            }
+            if (condition_chart.options.scales.x.max > condition_chart_data.length) {
+                if (condition_chart.options.scales.x.max >= condition_chart_data.length) {
+                    condition_chart.options.scales.x.min = condition_chart_data.length - 7;
+                    condition_chart.options.scales.x.max = condition_chart_data.length;
+                }
+            }
+            condition_chart.update();
+        }
+    }
+
+    // 마우스 업 이벤트 및 터치 업 이벤트 처리
+    document.addEventListener('mouseup', handleDragEnd);
+    condition_chart.canvas.addEventListener('touchend', handleDragEnd);
+
+    function handleDragEnd() {
+        isDragging = false;
+    }
+
+    // var condition_chart = new Chart(ctx, {
+    //   type: 'bar',
+    //   data: condition_mixedChart,
+    //   options: {
+    //     legend: {
+    //       display: true
+    //     }
+    //   }
+    // });
+</script>

@@ -1,0 +1,231 @@
+
+.body {
+    position: fixed;
+    line-height: var(--bs-body-line-height);
+}
+
+.high_img {
+    width: 100%;
+    object-fit: contain; /* 이미지가 지정한 크기 내에서 보여집니다 */
+}
+
+.card-img-top {
+    height: 100px;
+    object-fit: fill;
+    /*이미지를 테두리 둥글게 만드는것*/
+    /*border-radius: 5px;*/
+}
+
+.nav-button {
+    width: 6.5rem;
+    border: 2px solid #ff9c54 !important;
+}
+
+
+/* 애니메이션 클래스 정의 */
+
+@keyframes slideup {
+    from {
+        transform: translateY(10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/*드롭다운 메뉴의 애니메이션*/
+.dropdown-menu.show .dropdown-img {
+    animation: 0.5s slideup;
+}
+
+
+.dropdown-menu.show {
+    /*상단 메뉴에 이미지들을 옆으로 오버플로우 한다*/
+    overflow-x: scroll;
+    position: absolute !important;
+}
+
+.animationButton {
+    /*버튼의 높이 조절 및 애니메이션 설정*/
+    height: 3rem;
+    width: 100vw;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+
+/* Hide the button content */
+.animationButton.hide-content {
+    visibility: hidden;
+    width: 0;
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+
+.btn-container {
+    height: 150px;
+    overflow: hidden;
+}
+
+.hidden {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/*상단의 메뉴가 담긴 카드의 높이를 애니메이션으로 조절해주는 코드*/
+.first_card_box {
+    height: 4rem; /* 초기 높이 */
+    transition: height 0.5s; /* height 속성 변경 시 0.3초 동안 애니메이션 */
+}
+
+
+.modal_overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+}
+
+.modal_window {
+    background: #ffffff;
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 337px;
+    height: 1000px;
+    position: relative;
+    padding: 10px;
+}
+
+.form-select {
+    text-align-last: center;
+    -webkit-appearance: none !important;
+}
+
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+}
+
+.main_content {
+    height: 200vw;
+    background: linear-gradient(180deg, #f8d6b6 0%, #cff18b 100%);
+    background-size: cover; /* 배경 크기를 창에 맞게 확장 */
+}
+
+
+/*아래는 차트를 위한 캐러셀이다*/
+
+.kg_carousel-container {
+    width: 100vw;
+    overflow: hidden; /* 오버플로우 숨기기 */
+}
+
+.kg_carousel {
+    display: flex;
+    transition: transform 0.5s ease; /* 슬라이드 효과를 위한 트랜지션 */
+}
+
+.kg_card {
+    padding-top: 13px;
+    width: 300px;
+    height: 145px;
+    background-color: #ffffff;
+    margin-right: 50px; /* 카드 간 간격 조절 */
+}
+
+/* 슬라이더 버튼 스타일링은 선택 사항입니다. */
+.carousel-button {
+    cursor: pointer;
+    /* 슬라이더 버튼 스타일 설정 */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 38px;
+}
+
+.switch input {
+    display: none;
+}
+
+/* 스위치의 배경 */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffd05d;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 4px solid #ff9c54;
+    border-radius: 34px;
+}
+
+/* 스위치가 활성 상태일 때의 배경 */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+/* 스위치가 활성 상태인 경우의 스타일 */
+input:checked + .slider {
+    background-color: #8bb96a;
+}
+
+/* 스위치가 활성 상태인 경우의 배경 스타일 */
+input:focus + .slider {
+    box-shadow: 0 0 10px;
+}
+
+/* 스위치가 활성 상태인 경우의 앞면 스타일 */
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+.vertical-dotted-line {
+    border-left: 3.5px dotted #c8ac7c; /* 점선 스타일을 적용하며 색상은 #ffffff (흰색)입니다. */
+    height: 100%; /* 세로선이 전체 높이를 가리도록 합니다. */
+    margin: 0 10px;
+}
+
+.dotted-line {
+    border-top: 1px dotted #000; /* 점선 스타일을 적용하며 색상은 #000 (검은색)입니다. */
+    width: 100%; /* 가로선이 전체 너비를 가리도록 합니다. */
+    margin: 10px 0; /* 점선 위 아래의 여백을 설정합니다. */
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 업로드</title>
+</head>
+<body>
+    <div style="height: 300px;" id="uploadArea" onclick="openFileUploader()">
+    </div>
+    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    <button id="uploadButton">업로드</button>
+    <div id="preview"></div>
+
+</body>
+</html>
+
+<script>
+    function openFileUploader() {
+    document.getElementById("imageInput").click();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const imageInput = document.getElementById("imageInput");
+    const uploadButton = document.getElementById("uploadButton");
+    const preview = document.getElementById("preview");
+    const uploadArea = document.getElementById("uploadArea");
+
+    imageInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+
+        if (file) {
+            // 이미지 미리보기를 위해 이미지 URL 생성
+            const imageURL = URL.createObjectURL(file);
+
+            // 업로드된 이미지를 클릭한 공간에 표시
+            uploadArea.style.backgroundImage = `url(${imageURL})`;
+        }
+    });
+
+    uploadButton.addEventListener("click", function () {
+        const file = imageInput.files[0];
+
+        if (file) {
+            // 이곳에서 파일을 업로드하거나 원하는 작업을 수행합니다.
+            // 예: 서버로 파일 업로드
+        } else {
+            alert("이미지를 선택하세요.");
+        }
+    });
+});
+
+</script>

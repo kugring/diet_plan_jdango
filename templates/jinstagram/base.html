@@ -1,0 +1,2049 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block link %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+    <!-- 부트스트랩 링크 -->
+
+    <!-- 차트 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'kugring/header_nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kugring/made_box.css' %}">
+    <link rel="stylesheet" type="text/js" href="{% static 'kugring/Chart.min.js' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'kugring/number-swiper.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+{% block body %}
+<!-- 상단의 내비 부트스트랩 -->
+<nav id="navbar-example2" class="fixed-top navbar bg-body-tertiary px-3">
+    <img class="nav_img" style="transform: scale(1.2);" href="#scrollspyHeading1"
+         src="https://i.pinimg.com/564x/7f/61/0e/7f610ecbf364e95f2c97a12fdde9682b.jpg"></img>
+    <ul class="nav nav-pills" style="font-size: 15px;">
+        <li class="nav-item">
+            <a class="nav-link" style="color: #ff9900; font-weight: bolder" href="#scrollspyHeading1"> D-701</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-button" style="background: #ff7300" data-bs-toggle="dropdown"
+               href="#"
+               role="button" aria-expanded="false">diet_plan</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#scrollspyHeading1">First</a></li>
+                <li><a class="dropdown-item" href="#scrollspyHeading2">Second</a></li>
+                <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+                <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<!-- 필수 마진값 항목 -->
+<div class="page-content">
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+         data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0"
+         style="padding: 0.1rem 1rem !important;">
+        <!-- 첫번째 항목 -->
+        <h4 id="scrollspyHeading1"></h4>
+        <!-- 상단 카드박스 -->
+        <div class="first_card_box" style="display: flex; flex-direction: column;">
+            <div style="width: 100%; height:15rem; margin-top: 0.3rem; display: flex; flex-direction: row; justify-content: center; overflow: hidden">
+                <!-- 1번 그래프 -->
+                <div class="animationButton"
+                     style="display: flex; flex-direction: column;width: 20vw; margin-left: auto; margin-right: auto">
+                    <button class="dropdown btn btn-secondary" type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="true"
+                            style="width: auto; height: 2.7rem; background-color: rgb(246,123,47); border: 0.2rem solid #f67b2f; border-radius: 0.7rem; font-size: 0.7rem; font-weight: bold; padding: 0">
+                        <div style="border: 0.15rem solid #ffffff; border-radius: 0.5rem">
+                            <div class="dropdown-toggle">record</div>
+                            <div class="progress" role="progressbar"
+                                 aria-label="Animated striped example"
+                                 style="height: 0.4rem; margin: 0.1rem 1rem 0.2rem 1rem; border: 0.05rem solid #ffffff;">
+                                <div class="progress-bar_orange progress-bar-striped progress-bar-animated"
+                                     style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" style="width:89vw; padding: 0">
+                        <div class="dropdown-img"
+                             style="width: 146vw; display: flex; flex-direction: row; flex-wrap: nowrap; padding: 0.4rem">
+                            <div class="card" style="width: 44rem; margin-right: 0.5rem">
+                                <img src="https://i.pinimg.com/564x/e1/e6/03/e1e6034f02822ae1310c92e54511710b.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 3rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-3" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="999">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.5rem">
+                                <img src="https://i.pinimg.com/564x/22/f4/84/22f484ae3402d96344ceffa28985e24c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.5rem">
+                                <img src="https://i.pinimg.com/564x/29/fe/5d/29fe5df881dd7ed66e8c13005d66b5c0.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.5rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem;">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <!-- 2번 그래프 -->
+                <div class="animationButton"
+                     style="display: flex; flex-direction: column;width: 20vw; margin-left: auto; margin-right: auto">
+                    <button class="dropdown btn btn-secondary" type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="true"
+                            style="width: auto; height: 2.5rem; background-color: rgb(246,123,47); border: 0.2rem solid #f67b2f; border-radius: 0.7rem; font-size: 0.7rem; font-weight: bold; padding: 0">
+                        <div style="border: 0.15rem solid #ffffff; border-radius: 0.5rem">
+                            <div class="dropdown-toggle">record</div>
+                            <div class="progress" role="progressbar"
+                                 aria-label="Animated striped example"
+                                 style="height: 0.4rem; margin: 0.1rem 1rem 0.2rem 1rem; border: 0.05rem solid #ffffff;">
+                                <div class="progress-bar_orange progress-bar-striped progress-bar-animated"
+                                     style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" style="width:89vw; padding: 0">
+                        <div class="dropdown-img"
+                             style="width: 150vw; display: flex; flex-direction: row; flex-wrap: nowrap; padding: 3px">
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/564x/e1/e6/03/e1e6034f02822ae1310c92e54511710b.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 3rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-3" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="999">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/564x/22/f4/84/22f484ae3402d96344ceffa28985e24c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/564x/29/fe/5d/29fe5df881dd7ed66e8c13005d66b5c0.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <!-- 3번 그래프 -->
+                <div class="animationButton"
+                     style="display: flex; flex-direction: column;width: 20vw; margin-left: auto; margin-right: auto">
+                    <button class="dropdown-center btn btn-secondary" type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="true"
+                            style="width: auto; height: 2.5rem; background-color: rgb(246,123,47); border: 0.2rem solid #f67b2f; border-radius: 0.7rem; font-size: 0.7rem; font-weight: bold; padding: 0">
+                        <div style="border: 0.15rem solid #ffffff; border-radius: 0.5rem">
+                            <div class="dropdown-toggle">active</div>
+                            <div class="progress" role="progressbar"
+                                 aria-label="Animated striped example"
+                                 style="height: 0.4rem; margin: 0.1rem 1rem 0.2rem 1rem; border: 0.05rem solid #ffffff;">
+                                <div class="progress-bar_orange progress-bar-striped progress-bar-animated"
+                                     style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" style="width:89vw; padding: 0">
+                        <div class="dropdown-img"
+                             style="width: 150vw; display: flex; flex-direction: row; flex-wrap: nowrap; padding: 3px">
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 3rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-3" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="999">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <!-- 4번 그래프 -->
+                <div class="animationButton"
+                     style="display: flex; flex-direction: column;width: 20vw; margin-left: auto; margin-right: auto">
+                    <button class="dropdown-center btn btn-secondary" type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="true"
+                            style="width: auto; height: 2.5rem; background-color: rgb(246,123,47); border: 0.2rem solid #f67b2f; border-radius: 0.7rem; font-size: 0.7rem; font-weight: bold; padding: 0">
+                        <div style="border: 0.15rem solid #ffffff; border-radius: 0.5rem">
+                            <div class="dropdown-toggle">life</div>
+                            <div class="progress" role="progressbar"
+                                 aria-label="Animated striped example"
+                                 style="height: 0.4rem; margin: 0.1rem 1rem 0.2rem 1rem; border: 0.05rem solid #ffffff;">
+                                <div class="progress-bar_orange progress-bar-striped progress-bar-animated"
+                                     style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" style="width:89vw; padding: 0">
+                        <div class="dropdown-img"
+                             style="width: 150vw; display: flex; flex-direction: row; flex-wrap: nowrap; padding: 3px">
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 3rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-3" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="999">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 44rem; margin-right: 0.1rem">
+                                <img src="https://i.pinimg.com/236x/e2/09/08/e20908cb7ad527268b0bf7cf31dbaa4c.jpg"
+                                     class="card-img-top" alt="...">
+                                <div class="card-body" style="padding: 0; height: auto;">
+                                    <div id="myNumberSwiper" class="number-swiper"
+                                         style="font-size: 2rem; color: #985f0d" data-value="">
+                                        <ol class="number-swiper-column number-swiper-column-2" data-column="2">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <ol class="number-swiper-column number-swiper-column-1" data-column="1">
+                                            <li class="last-zero">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li id="center-1">0</li>
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                            <li>8</li>
+                                            <li>9</li>
+                                            <li class="last-zero">0</li>
+                                        </ol>
+                                        <input class="number-swiper-value" type="hidden" min="0" max="99">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                이게되나?
+            </div>
+        </div>
+    </div>
+    <!-- 두번째 항목 -->
+    <h4 id="scrollspyHeading2"></h4>
+    <body>
+    <div class="container">
+        <div class="card " style="flex-direction: row; flex-wrap: wrap;">
+            <div class="card-body custom-progress" style="padding: 0.5rem 1rem 0 1rem; margin: 0.7rem;width: 20rem">
+                <canvas id="diet_chart" height="100"></canvas>
+            </div>
+            <div class="card-body custom-progress" style="padding: 0.5rem 1rem 0 1rem; margin: 0.7rem;width: 20rem">
+                <canvas id="condition_chart" height="100"></canvas>
+            </div>
+        </div>
+
+    </div>
+    </body>
+    <h4 id="scrollspyHeading3">Third heading</h4>
+    <div>
+        <!-- 5번 그래프 -->
+        <div class="card-body custom-progress"
+             style="padding: 0.3rem; margin: 0.7rem;width: 10rem;">
+            <canvas id="plan_point_chart" height="230"></canvas>
+        </div>
+    </div>
+
+    <h4 id="scrollspyHeading4">Fourth heading</h4>
+
+</div>
+{% endblock %}
+
+
+<!-- 드롭다운 애니매이션 -->
+{% block script %}
+<script>
+    // 모든 버튼 요소 가져오기
+    var buttons = document.querySelectorAll('.animationButton');
+    // 부모 요소의 높이 가져오기
+    var parentHeight = document.querySelector('.animationButton').offsetHeight;
+
+    // 클래스가 적용된 모든 요소를 선택합니다.
+    var cardBoxes = document.querySelectorAll('.first_card_box');
+
+    // 토글의 초기 상태를 나타내는 변수
+    var isCardBoxToggled = false; // 초기 상태를 나타내는 변수
+
+
+    // 클릭 이벤트 리스너 함수 정의
+    function buttonClickHandler(button) {
+        buttons.forEach(function (otherButton) {
+            if (otherButton !== button) {
+                if (otherButton.style.opacity === '0') {
+                    setTimeout(function () {
+                        otherButton.style.opacity = '1';
+                    }, 300);
+                    otherButton.style.height = '17rem';
+                    otherButton.style.width = '20vw';
+                    button.style.width = '20vw';
+                    setTimeout(function () {
+                        otherButton.style.transform = 'translateY(-10px)';
+                    }, 200);
+                    setTimeout(function () {
+                        otherButton.style.transform = 'translateY(0px)';
+                    }, 400);
+
+                } else {
+                    otherButton.style.transform = 'translateY(-200px)';
+                    setTimeout(function () {
+                        otherButton.style.transform = 'translateY(0px)';
+                    }, 200);
+                    otherButton.style.opacity = '0';
+                    otherButton.style.height = '12rem';
+                    otherButton.style.width = '0';
+                    button.style.width = '100vw';
+                }
+            }
+        });
+        document.querySelector('.btn-secondary').style.height = parentHeight + 'px';
+    }
+
+    // 각 버튼에 클릭 이벤트 리스너 추가
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            buttonClickHandler(button);
+            if (isCardBoxToggled) {
+                // 두 번째로 클릭할 때, 높이를 12rem로 다시 설정
+                cardBoxes.forEach(function (cardBox) {
+                    // 상단 메뉴가 보이기 위한 높이임
+                    cardBox.style.height = '5rem';
+                });
+            } else {
+                // 첫 번째로 클릭할 때, 높이를 1rem로 설정
+                cardBoxes.forEach(function (cardBox) {
+                    cardBox.style.height = '17rem';
+                });
+            }
+            isCardBoxToggled = !isCardBoxToggled;
+        });
+    });
+
+
+</script>
+<!-- 드롭다운 색상변경 -->
+<script>
+    // JavaScript를 사용하여 스타일을 동적으로 설정
+    var prefixProgressBarColor = "#ffaf1b";
+    var elements = document.querySelectorAll(".progress-bar_orange");
+
+    elements.forEach(function (element) {
+        element.style.backgroundColor = prefixProgressBarColor;
+    });
+</script>
+<!-- diet 차트 -->
+<script>
+    // 중요한 데이터 값들!
+    const diet_chart_data = [10, 20, 30, 40, 30, 40, 20, 50, 27, 52, 38, 26, 75, 22];
+    const diet_chart_dataHalf = [5, 10, 20, 7, 30, 20, 26, 14, 36, 25, 72, 25, 53, 50];
+
+    // 최대값 최소값 구하기
+    const mostPositiveValue = Math.max(...diet_chart_data);
+    const mostNegativeValue = Math.min(...diet_chart_data);
+
+
+    var mixedChart = {
+        type: 'bar',
+        labels: ['Mon', 'Tue', 'Wue', 'Tru', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wue', 'Tru', 'Fri', 'Sat', 'Sun',],
+        datasets: [
+            {
+                label: 'Line Dataset',
+                data: diet_chart_dataHalf,
+                backgroundColor: 'transparent',
+                borderColor: 'rgba(239,142,64,0.58)',
+                type: 'line',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: 'rgb(255,242,229)'
+            },
+            {
+                label: '몸무게',
+                data: diet_chart_data,
+                backgroundColor: [
+                    'rgb(255,224,176)',
+
+                ],
+                borderColor: [
+                    'rgb(255,202,136)',
+
+                ],
+                borderWidth: 2,
+                borderRadius: 10,
+                borderSkipped: true,
+                categoryPercentage: 0.6
+            },
+        ]
+    };
+    // 플러그인 정의
+    const ChartMovePlugin = {
+        id: 'moveChart',
+        afterEvent(chart, args) {
+            const {ctx, canvas, chartArea: {left, right, top, bottom, width, height}} = chart;
+
+            // 마우스가 있는 좌표를 알려주는 코드
+            canvas.addEventListener('mousemove', (event) => {
+                const x = args.event.x;
+                const y = args.event.y;
+
+                // x,y축의 픽셀값을 설정하고 그에 따라 마우스 모양을 다르게 한다.
+                if (x >= left - 15 && x <= left + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                    canvas.style.cursor = 'pointer';
+                } else if (x >= right - 15 && x <= right + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                    canvas.style.cursor = 'pointer';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+            })
+        },
+
+
+        afterDraw(chart, args, options) {
+            const {ctx, chartArea} = chart;
+            const {left, right, top, bottom, width, height} = chartArea;
+
+            class CircleChevron {
+                //construcor(x1,y1) {
+                //  //
+                //}
+                draw(ctx, x1, pixel) {
+                    const angle = Math.PI / 180;
+
+                    <!-- 일부러 방향표 빼놓은것 -->
+
+                    // 동그라미 그리기
+                    {#ctx.beginPath();#}
+                    {#ctx.lineWidth = 3;#}
+                    {#ctx.strokeStyle = 'rgba(102,102,102,0.5)';#}
+                    {#ctx.fillStyle = 'white';#}
+                    {#ctx.arc(x1, height / 2 + top + 9, 10, angle * 0, angle * 360, false);#}
+                    {#ctx.stroke();#}
+                    {#ctx.fill();#}
+                    {#ctx.closePath();#}
+                    {##}
+                    {#// 화살표 그리기#}
+                    {#ctx.beginPath();#}
+                    {#ctx.lineWidth = 3;#}
+                    {#ctx.strokeStyle = 'rgb(255,156,84)';#}
+                    {#ctx.moveTo(x1 + pixel, top + height / 2 + top - 6.5);#}
+                    {#ctx.lineTo(x1 - pixel, top + height / 2 + top - 1);#}
+                    {#ctx.lineTo(x1 + pixel, top + height / 2 + top + 4.5);#}
+                    {#ctx.stroke();#}
+                    {#ctx.closePath();#}
+
+                    <!-- 여기까지 빼놓은것 -->
+                }
+            }
+
+            // 왼쪽 버튼을 그리는 코드
+            let drawCircleLeft = new CircleChevron();
+            drawCircleLeft.draw(ctx, left, 4);
+
+            // 오른쪽 버튼을 그리는 코드
+            let drawCircleRight = new CircleChevron();
+            drawCircleRight.draw(ctx, right, -4);
+
+            // back_스크롤 만드는 코드
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(255,236,177)';
+            ctx.rect(left + 15, bottom + 4, width - 30, 7);
+            ctx.fill();
+            ctx.closePath()
+            // front_스크롤 만드는 코드
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(252,195,140)';
+            ctx.rect(left - 0.8, -9, width + 1, 10); // 맨 위에 태두리
+            ctx.rect(left, bottom + 4, 15, 7); // 왼쪽 테두리
+            ctx.rect(right - 15, bottom + 4, 15, 7); // 오른쪽 테두리
+            ctx.rect(left + 15, bottom + 4, width - 30, 2); // 위에 테두리
+            ctx.rect(left + 15, bottom + 9, width - 30, 2); // 아래 태두리
+            ctx.fill();
+            ctx.closePath()
+
+            // 양쪽 사이드에 테두리 그리기
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(252,195,140)';
+            ctx.rect(left - 1, -7, 2, 100); // 왼쪽 테두리
+            ctx.rect(right - 1, -7, 2, 100); // 왼쪽 테두리
+            ctx.fill();
+            ctx.closePath()
+
+            // movable bar
+            const min = chart.options.scales.x.min;
+            let startingPoint = left + 15 + width / diet_chart_data.length * min;
+            const barWidth = (width - 30) / (diet_chart_data.length / 7)
+
+            const totalWidth = startingPoint + barWidth
+            if (totalWidth > width) {
+                startingPoint = right - 15 - barWidth;
+            }
+
+            ctx.beginPath();
+            ctx.fillStyle = 'rgb(255,255,255)';
+            ctx.rect(startingPoint, bottom + 6, barWidth, 3);
+            ctx.fill();
+            ctx.closePath()
+
+        }
+    }
+
+
+    // Chart.js 플러그인 생성
+    Chart.register(ChartMovePlugin);
+
+
+    var ctx = document.getElementById('diet_chart').getContext('2d');
+    var diet_chart = new Chart(ctx, {
+        type: 'bar',
+        data: mixedChart,
+        plugins: {
+            moveChart: ChartMovePlugin, // 플러그인 활성화
+        },
+        options: {
+            layout: {
+                padding: {
+                    top: -4,
+                    right: 13,
+                    bottom: 0,
+                }
+
+            },
+            plugins: {
+                tooltip: {
+                    enabled: false
+                },
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    text: "식단과 운동",
+                    fontSize: 10
+                }
+            },
+            scales: {
+                x: {
+                    position: 'top',
+                    min: 0, // 0~6은 1~7를 의미한다.
+                    max: 6,
+
+                    ticks: {
+                        padding: 10,
+                        font:
+                            {
+                                size: 10
+                            }
+                        ,
+                        color: 'orange', // 폰트 색상 변경
+
+                    },
+                    grid: {
+                        display: true,
+                        drawBorder: false,
+                        drawOnChartArea: false, // 차트 안에서의 x축 그리드를 그려줌
+                        color: 'rgb(255,156,84)',
+                        drawTicks: false, // x축에 삐죽 튀어난 선을 없애줌
+                    },
+                    stacked: true, // 데이터 누적 시킬것인지!
+                    border: {
+                        display: false,
+                        color: 'rgb(255,156,84)', //  위쪽 차트 테두리 색상
+                        width: 2, //  위쪽 차트 테두리 굵기
+                    }
+                },
+                x2: {
+                    ticks: {
+                        font: {
+                            size: 0
+                        }
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: true
+                    },
+                    position: 'bottom',
+                    min: 0, // 0~6은 1~7를 의미한다.
+                    max: 6,
+                    stacked: false, // 데이터 누적 시킬것인지!
+                    border: {
+                        display: false,
+                        color: 'rgb(255,156,84)', //  아래쪽 차트 테두리 색상
+                        width: 2, //  아래쪽 차트 테두리 굵기
+                    }
+                },
+                y: {
+                    ticks: {
+                        display: true
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    stacked: true, // 데이터 누적 시킬것인지!
+                    border: {
+                        color: 'rgb(255,156,84)', //  왼쪽 차트 테두리 색상
+                        width: 2, //  왼쪽 차트 테두리 굵기
+                    }
+                },
+                y2: {
+                    position:
+                        'right',
+                    ticks: {
+                        display: false
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    stacked: true, // 데이터 누적 시킬것인지!
+                    border: {
+                        color: 'rgb(255,156,84)', //  오른쪽 차트 테두리 색상
+                        width: 2, //  오른쪽 차트 테두리 굵기
+                    }
+                }
+            }
+        },
+    });
+
+    function moveScroll() {
+        const {ctx, canvas, chartArea: {left, right, top, bottom, width, height}} = diet_chart;
+
+        canvas.addEventListener('click', (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            console.log(diet_chart_data.length)
+            if (x >= left - 15 && x <= left + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                diet_chart.options.scales.x.min = diet_chart.scales.x.min - 7;
+                diet_chart.options.scales.x.max = diet_chart.scales.x.max - 7;
+                if (diet_chart.options.scales.x.max <= 0) {
+                    diet_chart.options.scales.x.min = 0;
+                    diet_chart.options.scales.x.max = 6;
+                }
+            }
+
+            if (x >= right - 15 && x <= right + 15 && y >= height / 2 + top - 15 && y <= height / 2 + top + 15) {
+                diet_chart.options.scales.x.min = diet_chart.scales.x.min + 7;
+                diet_chart.options.scales.x.max = diet_chart.scales.x.max + 7;
+                if (diet_chart.options.scales.x.max >= diet_chart_data.length) {
+                    diet_chart.options.scales.x.min = diet_chart_data.length - 7;
+                    diet_chart.options.scales.x.max = diet_chart_data.length;
+                }
+            }
+            diet_chart.update();
+        })
+    }
+
+    function scrollWheel(wheel, chart) {
+        if (wheel.deltaY < 0) {
+            console.log(wheel.deltaY);
+            diet_chart.options.scales.x.min = diet_chart.scales.x.min - 7;
+            diet_chart.options.scales.x.max = diet_chart.scales.x.max - 7;
+            if (diet_chart.options.scales.x.max <= 0) {
+                diet_chart.options.scales.x.min = 0;
+                diet_chart.options.scales.x.max = 6;
+            }
+        }
+        if (wheel.deltaY > 0) {
+            console.log(wheel.deltaY);
+            diet_chart.options.scales.x.min = diet_chart.scales.x.min + 7;
+            diet_chart.options.scales.x.max = diet_chart.scales.x.max + 7;
+            if (diet_chart.options.scales.x.max >= diet_chart_data.length) {
+                diet_chart.options.scales.x.min = diet_chart_data.length - 7;
+                diet_chart.options.scales.x.max = diet_chart_data.length;
+            }
+        }
+        diet_chart.update();
+    }
+
+
+    diet_chart.canvas.onclick = moveScroll;
+
+    diet_chart.canvas.addEventListener('wheel', (e) => {
+        scrollWheel(e, diet_chart)
+    });
+
+    var dragStartX = 0;
+    var isDragging = false;
+
+    // 마우스 다운 이벤트 및 터치 시작 이벤트 처리
+    diet_chart.canvas.addEventListener('mousedown', handleDragStart);
+    diet_chart.canvas.addEventListener('touchstart', handleDragStart);
+
+    function handleDragStart(event) {
+        if (event.type === 'mousedown') {
+            dragStartX = event.clientX;
+        } else if (event.type === 'touchstart') {
+            dragStartX = event.touches[0].clientX;
+        }
+
+        isDragging = true;
+    }
+
+    // 마우스 이동 이벤트 및 터치 이동 이벤트 처리
+    diet_chart.canvas.addEventListener('mousemove', handleDrag);
+    diet_chart.canvas.addEventListener('touchmove', handleDrag);
+
+    function handleDrag(event) {
+        if (isDragging) {
+            var clientX;
+
+            if (event.type === 'mousemove') {
+                clientX = event.clientX;
+            } else if (event.type === 'touchmove') {
+                clientX = event.touches[0].clientX;
+            }
+
+            var deltaX = clientX - dragStartX;
+            dragStartX = clientX;
+
+            // 원하는 이동 거리 및 방향에 따라 x 축 스케일 업데이트
+            var scrollStep = 7;
+            diet_chart.options.scales.x.min -= deltaX / scrollStep;
+            diet_chart.options.scales.x.max -= deltaX / scrollStep;
+
+            // 최소값과 최대값을 0과 diet_chart_data.length / 7 범위로 고정
+            if (diet_chart.options.scales.x.min < 0) {
+                if (diet_chart.options.scales.x.max <= 7) {
+                    diet_chart.options.scales.x.min = 0;
+                    diet_chart.options.scales.x.max = 6;
+                }
+            }
+            if (diet_chart.options.scales.x.max > diet_chart_data.length) {
+                if (diet_chart.options.scales.x.max >= diet_chart_data.length) {
+                    diet_chart.options.scales.x.min = diet_chart_data.length - 7;
+                    diet_chart.options.scales.x.max = diet_chart_data.length;
+                }
+            }
+            diet_chart.update();
+        }
+    }
+
+    // 마우스 업 이벤트 및 터치 업 이벤트 처리
+    document.addEventListener('mouseup', handleDragEnd);
+    diet_chart.canvas.addEventListener('touchend', handleDragEnd);
+
+    function handleDragEnd() {
+        isDragging = false;
+    }
+
+    // var diet_chart = new Chart(ctx, {
+    //   type: 'bar',
+    //   data: mixedChart,
+    //   options: {
+    //     legend: {
+    //       display: true
+    //     }
+    //   }
+    // });
+</script>
+<!--condition 차트 -->
+<script>
+    const condition_Data = [10, 20, 30, 40, 30, 40, 20];
+    const condition_DataHalf = [5, 10, 20, 7, 30, 20];
+    // var ctx = document.getElementById("diet_chart");
+    var ctx = document.getElementById("condition_chart");
+    var mixedChart = {
+        type: 'bar',
+        labels: ['MON', 'TUE', 'WUE', 'TUR', 'FRI', 'SAT', 'SUN'],
+        datasets: [
+            {
+                label: 'Line Dataset',
+                data: condition_DataHalf,
+                backgroundColor: 'transparent',
+                borderColor: 'rgba(74,136,229,0.58)',
+                type: 'line',
+                pointBorderWidth: 2.5,
+                pointRadius: 4,
+                pointBackgroundColor: 'rgb(171,232,147)'
+            },
+            {
+                label: '몸무게',
+                data: condition_Data,
+                backgroundColor: 'rgba(182,255,157,0.25)',
+                borderColor: 'rgb(168,201,155)',
+                borderWidth: 3,
+                borderRadius: 10,
+                borderSkipped: false,
+                categoryPercentage: 0.8
+            }
+        ]
+    };
+    var condition_chart = new Chart(ctx, {
+        type: 'bar',
+        data: mixedChart,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    text: "식단과 운동",
+                    fontSize: 10
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'orange' // 폰트 색상 변경
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    stacked: true
+                },
+                y: {
+                    ticks: {
+                        display: false
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    stacked: true
+                }
+            }
+        }
+    });
+    // var diet_chart = new Chart(ctx, {
+    //   type: 'bar',
+    //   data: mixedChart,
+    //   options: {
+    //     legend: {
+    //       display: true
+    //     }
+    //   }
+    // });
+</script>
+<!--새로운 차트 -->
+<script>
+    const plan_point_data = [10, 20, 30, 40, 30, 40, 20];
+    var ctx = document.getElementById("plan_point_chart");
+
+    const roundedProgressBar = {
+        id: 'roundedProgressBar',
+
+    }
+
+
+    var mixedChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['MON', 'TUE', 'WUE', 'TUR', 'FRI', 'SAT', 'SUN'],
+            datasets: [{
+                label: '몸무게',
+                data: plan_point_data,
+                backgroundColor: 'rgba(182,255,157,0.25)',
+                borderColor: 'rgb(168,201,155)',
+                borderWidth: 1,
+                barPercentage: 1,
+                borderSkipped: false,
+                borderRadius: 10,
+                categoryPercentage: 0.8
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    ticks: {
+                        display: false,
+                        color: 'orange',
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    stacked: true
+                },
+                y: {
+                    ticks: {
+                        color: 'orange',
+                        font: {
+                            size: 7 // 원하는 폰트 크기로 설정
+                        },
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    stacked: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    text: "식단과 운동",
+                    fontSize: 10
+                },
+                roundedProgressBar: {
+                    // 플러그인 옵션 설정
+                }
+            }
+        }
+
+
+    });
+</script>
+
+
+<!-- 애니메이션 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
+
+</body>
+</html>
+
+
+{#주황색 테두리와 흰색 배경을 가진 박스 플렉스:컬럼 컨텐츠가 중앙으로#}
