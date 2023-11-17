@@ -1,4 +1,8 @@
 
+::-webkit-scrollbar {
+    width: 0; /* Chrome, Safari, Edge 등 Webkit 기반 브라우저 */
+}
+
 .body {
     position: fixed;
     line-height: var(--bs-body-line-height);
